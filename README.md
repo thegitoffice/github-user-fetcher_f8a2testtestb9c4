@@ -7,6 +7,12 @@ This application allows users to retrieve the account creation date of a GitHub 
 - Input fields for GitHub username and optional token
 - Button to fetch and display the account creation date
 - Error handling for invalid input or failed API requests
+- Cached last successful lookup in localStorage under github-user-${seed}
+- Form repopulation on load with the cached data
+
+## Round 2 Updates
+- Cached last successful lookup in localStorage under a unique identifier
+- Repopulated the form with the cached data on page load
 
 ## Installation
 Simply open the HTML file in a web browser to run the application.
