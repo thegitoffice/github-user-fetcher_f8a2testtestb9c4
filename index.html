@@ -31,6 +31,15 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const savedData = localStorage.getItem("github-user-12345");
+            if (savedData) {
+                const { username, token } = JSON.parse(savedData);
+                document.querySelector("#username").value = username;
+                document.querySelector("#token").value = token;
+            }
+        });
+
         document.querySelector("#github-user-12345").addEventListener("submit", async function(event) {
             event.preventDefault();
             const username = document.querySelector("#username").value;
@@ -43,6 +52,7 @@
                     const userData = await response.json();
                     const createdDate = new Date(userData.created_at);
                     document.querySelector("#github-created-at").textContent = createdDate.toISOString().split('T')[0];
+                    localStorage.setItem("github-user-12345", JSON.stringify({ username, token }));
                 } else {
                     document.querySelector("#github-created-at").textContent = "Error fetching data";
                 }
